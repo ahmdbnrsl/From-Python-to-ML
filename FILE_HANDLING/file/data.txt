@@ -1,0 +1,3 @@
+Python itu mudah.
+Belajar Python itu asik.
+Aku sedang belajar file handling.

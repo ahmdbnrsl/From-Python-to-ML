@@ -1,3 +1,5 @@
+from abc import ABC, abstractmethod
+
 class Hewan:
     def suara(self):
         print("Hewan Bersuara")
@@ -18,3 +20,26 @@ anjing = Anjing()
 
 buat_suara(kambing)
 buat_suara(anjing)
+# ABSTRACT CLASS
+
+class Kendaraan(ABC):
+    @abstractmethod
+    def bergerak(self):
+        pass
+    
+class Mobil(Kendaraan):
+    def bergerak(self):
+        return "Bergerak dijalan"
+        
+class Pesawat(Kendaraan):
+    def bergerak(self):
+        return "Terbang di udara"
+        
+def kendaraan_bergerak(kendaraan):
+    print(kendaraan.bergerak())
+    
+mobil = Mobil()
+pesawat = Pesawat()
+
+kendaraan_bergerak(mobil)
+kendaraan_bergerak(pesawat)
