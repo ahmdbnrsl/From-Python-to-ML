@@ -95,3 +95,23 @@ print(kuadrat(5))
 list_of_number = [1, -2, 3, 4, 5, -7]
 filtered_negative_number = list(filter(lambda x: x < 0, list_of_number))
 print(filtered_negative_number)
+
+# rest parameter
+# ARGS
+def data_siswa(*nama_siswa):
+    print(nama_siswa)
+
+data_siswa("Beni", "Ahmad", "Rusli")
+
+# KEYWORD ARGS
+def data_mahasiswa(**nama_mahasiswa):
+    print(nama_mahasiswa)
+
+data_mahasiswa(nama="Ahmad", umur=19)
+
+# MIX
+def data_penduduk(*penduduk, **kwpenduduk):
+    print(penduduk)
+    print(kwpenduduk)
+    
+data_penduduk("Cikarag", nama="Ahmad Beni Rusli")
