@@ -115,3 +115,30 @@ def data_penduduk(*penduduk, **kwpenduduk):
     print(kwpenduduk)
     
 data_penduduk("Cikarag", nama="Ahmad Beni Rusli")
+
+# built in function
+nama = "Ahmad"
+print(len(nama))  # Output: 5
+
+angka = 10
+print(type(angka))  # Output: <class 'int'>
+
+angkas = [1, 2, 3, 4, 5]
+print(max(angkas))  # Output: 5
+print(min(angkas))  # Output: 1
+
+angka_1 = [1, 2, 3]
+print(sum(angka_1))  # Output: 6
+
+angka_2 = [3, 1, 4, 2]
+print(sorted(angka_2))  # Output: [1, 2, 3, 4]
+
+# exercise
+
+def luas_persegi(sisi):
+    return sisi * sisi
+
+print(luas_persegi(8))
+
+data = [12, 45, 7, 89, 24]
+print(max(data))
