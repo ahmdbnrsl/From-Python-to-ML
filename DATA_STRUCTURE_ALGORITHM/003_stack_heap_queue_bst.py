@@ -113,10 +113,10 @@ class BST:
 # Contoh penggunaan
 tree = BST()
 tree.insert(10)
-tree.insert(5)
-tree.insert(15)
-tree.insert(3)
-
+tree.insert(9)
+tree.insert(12)
+tree.insert(7)
+tree.insert(13)
 tree.inorder(tree.root)  # Output: 3 5 10 15
 print('\n')
 tree.search(tree.root, 2)
