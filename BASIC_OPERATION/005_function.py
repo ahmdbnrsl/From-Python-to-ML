@@ -142,3 +142,13 @@ print(luas_persegi(8))
 
 data = [12, 45, 7, 89, 24]
 print(max(data))
+
+# rekursif
+def faktorial(n):
+    # Base case
+    if n == 1:
+        return 1
+    # Recursive case
+    return n * faktorial(n - 1)
+
+print(faktorial(5))  # Output: 120
