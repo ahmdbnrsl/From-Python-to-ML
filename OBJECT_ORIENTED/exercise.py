@@ -83,3 +83,30 @@ Method __mul__ :
 Method __eq__ :
 Perbandingan Kecepatan Motor dan Mobil : {"Mobil memiliki kecepatan yang sama dengan Motor" if mobil == motor else "Mobil memiliki kecepatan yang tak sama dengan Motor"}
 ''')
+
+# polymorphism
+
+class BangunDatar:
+    def __init__(self, nama):
+        self.nama = nama
+    def luas(self, **ukuran):
+        raise NotImplementedError("Metode luas harus diimplementasikan di kelas turunan.")
+
+class Persegi(BangunDatar):
+    def luas(self, **ukuran):
+        if isinstance(ukuran["sisi"], (int, float)):
+            return ukuran["sisi"] * ukuran["sisi"]
+        raise ValueError("Nilai harus berupa angka (int/float).")
+
+class Segitiga(BangunDatar):
+    def luas(self, **ukuran):
+        if isinstance(ukuran["alas"], (int, float)) and isinstance(ukuran["tinggi"], (int, float)):
+            return 1/2 * ukuran["alas"] * ukuran["tinggi"]
+        raise ValueError("Nilai harus berupa angka (int/float).")
+
+def cetak_luas(bangun, **ukuran):
+    print(f"Luas dari {bangun.nama} adalah {bangun.luas(**ukuran)}")
+
+# Penggunaan
+cetak_luas(Persegi("Persegi"), sisi=20)       # Output: Luas dari Persegi adalah 400
+cetak_luas(Segitiga("Segitiga"), alas=10, tinggi=15)  # Output: Luas dari Segitiga adalah 75.0
