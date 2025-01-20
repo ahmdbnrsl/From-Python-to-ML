@@ -49,3 +49,60 @@ print("Angka ganjil:", list(odd))  # Output: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 # Jumlah angka genap dari 1 hingga 1000
 even_count = sum(1 for i in range(1, 1001) if i % 2 == 0)
 print("Jumlah angka genap:", even_count)  # Output: 500
+
+# Procedural paradigm untuk mencetak factorial dari 1 - 5
+import math
+
+def factorial(start, end):
+    if start >= end:
+        raise ValueError("Masukan dari angka terkecil ke terbesar")
+    else:
+        result = [math.factorial(i) for i in range(start, end+1)]
+        print(result)
+
+factorial(1, 5)
+
+#OOP paradigms untuk mencetak angka genap
+class Angka:
+    def __init__(self, angka):
+        if angka <= 0:
+            raise ValueError("Masukan hanya bilangan bulat positif")
+        else:
+            self.angka = angka
+    def is_genap(self):
+        print(self.angka % 2 == 0)
+
+angka = Angka(6)
+angka.is_genap()
+
+# functional paradigm untuk menjumlahkan semua angka genap dari 1 - 20
+angka_genap = sum((i for i in range(1, 21) if i % 2 == 0))
+print(angka_genap)
+
+import math
+
+# Procedural Paradigm
+def factorial(start=1, end=5):
+    if start >= end:
+        raise ValueError("Masukan dari angka terkecil ke terbesar")
+    result = [math.factorial(i) for i in range(start, end + 1)]
+    return result
+
+print("Faktorial:", factorial())  # Output: [1, 2, 6, 24, 120]
+
+# OOP Paradigm
+class Angka:
+    def __init__(self, angka):
+        if angka <= 0:
+            raise ValueError("Masukan hanya bilangan bulat positif")
+        self.angka = angka
+
+    def is_genap(self):
+        return self.angka % 2 == 0
+
+angka = Angka(6)
+print("Apakah genap:", angka.is_genap())  # Output: True
+
+# Functional Paradigm
+angka_genap = sum(i for i in range(1, 21) if i % 2 == 0)
+print("Jumlah angka genap:", angka_genap)  # Output: 110
