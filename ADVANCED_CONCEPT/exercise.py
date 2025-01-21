@@ -106,3 +106,67 @@ print("Apakah genap:", angka.is_genap())  # Output: True
 # Functional Paradigm
 angka_genap = sum(i for i in range(1, 21) if i % 2 == 0)
 print("Jumlah angka genap:", angka_genap)  # Output: 110
+
+# Asynchronous task
+import asyncio as asc
+import requests
+import json
+
+async def make_request(url):
+    await asc.sleep(2)
+    return requests.get(url)
+
+async def fetch_data():
+    url = "https://api.github.com/users/ahmdbnrsl"
+    print(f"Start fetching data to {url}...")
+    response = await make_request(url)
+    print(f"Data successfully taked with response : \n{json.dumps(response.json(), indent=2)}\n\n")
+
+async def process_data():
+    print("Start processing...")
+    await asc.sleep(3)
+    print("Processing finish")
+
+async def main():
+    await asc.gather(
+        fetch_data(),
+        process_data()
+    )
+
+asc.run(main())
+
+
+import httpx
+
+# Fungsi untuk membuat request HTTP secara asynchronous
+async def make_request(url):
+    async with httpx.AsyncClient() as client:
+        return await client.get(url)
+
+# Fungsi untuk mengambil data dari API
+async def fetch_data():
+    url = "https://api.github.com/users/ahmdbnrsl"
+    print(f"Start fetching data from {url}...")
+    try:
+        response = await make_request(url)
+        if response.status_code == 200:
+            print(f"Data successfully fetched:\n{json.dumps(response.json(), indent=2)}\n\n")
+        else:
+            print(f"Failed to fetch data. Status code: {response.status_code}")
+    except Exception as e:
+        print(f"An error occurred while fetching data: {e}")
+
+# Fungsi untuk memproses data
+async def process_data():
+    print("Start processing...")
+    await asc.sleep(3)
+    print("Processing finished\n")
+
+# Fungsi utama untuk menjalankan kedua tugas secara bersamaan
+async def main():
+    await asc.gather(
+        fetch_data(),
+        process_data()
+    )
+
+asc.run(main())
