@@ -27,7 +27,7 @@ normalisasi
 Vnorm = V / ||V|| = [3/7.071] [0.424]
                     [4/7.071] [0.565]
                     [5/7.071] [0.707]
-
+   
 penjumlahan matriks 2x2
 C = [7, 5]
     [3, 1]
