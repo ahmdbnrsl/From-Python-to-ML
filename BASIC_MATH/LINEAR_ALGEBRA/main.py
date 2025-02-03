@@ -108,6 +108,39 @@ selsesaikan dengan rumus kuadratik
 
 Λ = -(-9)±√(-9)^2-4(1)(50)/2(1) = 9±i√119/2
 
+A = [5 4]
+    [2 3]
+
+det(A - ΛI)
+[5 4] - [Λ 0]
+[2 3]   [0 Λ]
+
+[5-Λ  4]
+[2    3-Λ]
+
+(5-Λ)(3-Λ) - 2.4 = 0
+(5-Λ)(3-Λ) - 8 = 0
+15-5Λ-3Λ+Λ^2-8 =0
+Λ^2-8Λ+7 = 0
+
+(-7) * (-1) = 7
+(-7) + (-1) = -8
+
+eigen values = [7, 1]
+
+(A-ΛI)V = 0
+
+[5-7 4]
+[2 3-7]
+
+[-2 4]  [x] = [0]
+[2 -4]  [y]   [0]
+
+-2x +4y = 0
+4y = 2x 
+y = x/2
+
+
 """
 
 A = np.array([[8,7], [-6, 1]])
@@ -120,6 +153,13 @@ eigenvalues, eigenvectors = np.linalg.eig(A)
 print(eigenvalues)
 print(eigenvectors)
 
+A = np.array([[5, 4], [2, 3]])
+eigenvalues, eigenvectors = np.linalg.eig(A)
+print(eigenvalues, eigenvectors)
+
+A = np.array([[6, 2, 0], [1, 5 , -1], [0, 2, 4]])
+eigenvalues, eigenvectors = np.linalg.eig(A)
+print(eigenvalues, '\n', eigenvectors)
 
 # import matplotlib.pyplot as plt
 
