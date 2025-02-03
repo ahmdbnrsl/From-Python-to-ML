@@ -161,6 +161,10 @@ A = np.array([[6, 2, 0], [1, 5 , -1], [0, 2, 4]])
 eigenvalues, eigenvectors = np.linalg.eig(A)
 print(eigenvalues, '\n', eigenvectors)
 
+B = np.array([[6, 4], [1, 7]])
+eigenvalues, eigenvectors = np.linalg.eig(B)
+print(eigenvalues, '\n', eigenvectors)
+
 # import matplotlib.pyplot as plt
 
 # # Matriks A
