@@ -1,4 +1,10 @@
+class Console:
+    def __init__(self):
+        pass
+    def log(self, *args):
+        print(*args)
 
+console = Console()
 """
 MATRIKS
 perkalian matriks 3x3
@@ -200,3 +206,159 @@ print(eigenvalues, '\n', eigenvectors)
 # plt.grid()
 # plt.title("Visualisasi Eigenvectors dan Transformasinya")
 # plt.show()
+
+# impelement on python
+
+# import numpy as np
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+
+# X = np.array([
+#     [2.5, 2.4, 0.5],
+#     [0.5, 0.7, -1.2],
+#     [2.2, 2.9, 0.3],
+#     [1.9, 2.2, 0.1],
+#     [3.1, 3.0, 1.2],
+#     [2.3, 2.7, 0.4],
+#     [2, 1.6, -0.5],
+#     [1, 1.1, -1.0],
+#     [1.5, 1.6, -0.8],
+#     [1.1, 0.9, -1.3]
+# ])
+
+# pca = PCA(n_components=2)
+# X_reduced = pca.fit_transform(X)
+# console.log(X_reduced)
+
+# console.log("Eigenvectors (komponen utama):")
+# console.log(pca.components_)
+
+# console.log("Eigenvalues (variansi per komponen):")
+# console.log(pca.explained_variance_)
+
+# plt.scatter(X_reduced[:, 0], X_reduced[:, 1])
+# plt.title("Data setelah PCA")
+# plt.xlabel("Komponen 1")
+# plt.ylabel("Komponen 2")
+# plt.show()
+
+# import numpy as np
+
+# np.random.seed(42)
+# n_samples = 100
+
+# square_footage = np.random.normal(2000, 300, n_samples)
+# num_rooms = np.random.normal(1, 4, n_samples)
+# price = square_footage * 150 + num_rooms * 10000 + np.random.normal(0, 20000, n_samples)
+
+
+# X = np.column_stack((square_footage, num_rooms, price))
+
+# pca = PCA(n_components=2)
+# data_reduced = pca.fit_transform(X)
+
+# console.log("Eigenvectors (komponen utama):\n", pca.components_)
+# console.log("\nExplained Variance (variansi yang dijelaskan):\n", pca.explained_variance_)
+
+
+# plt.figure(figsize=(8, 6))
+# plt.scatter(data_reduced[:, 0], data_reduced[:, 1], alpha=0.7)
+# plt.xlabel("Komponen Utama 1")
+# plt.ylabel("Komponen Utama 2")
+# plt.title("Visualisasi Data Rumah setelah PCA\n(Mengurangi 3 Fitur Menjadi 2 Komponen)")
+# plt.grid(True)
+# plt.show()
+
+import json
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+
+# Contoh data JSON sebagai string
+json_data = """
+{
+  "students": [
+    {"name": "Alice", "age": 20, "gpa": 3.8, "credits": 120, "score": 85},
+    {"name": "Bob", "age": 22, "gpa": 3.2, "credits": 110, "score": 78},
+    {"name": "Charlie", "age": 21, "gpa": 3.5, "credits": 130, "score": 82},
+    {"name": "David", "age": 23, "gpa": 3.0, "credits": 100, "score": 75},
+    {"name": "Eva", "age": 20, "gpa": 3.9, "credits": 125, "score": 88}
+  ]
+}
+"""
+
+# 1. Muat data JSON dan ubah menjadi DataFrame
+# data = json.loads(json_data)
+# students = data["students"]
+# df = pd.DataFrame(students)
+
+# console.log(df)
+
+# # 2. Ekstrak fitur numerik (kita buang kolom 'name' agar hanya ada fitur angka)
+# df_numeric = df.drop(columns=["name"])
+
+# # 3. Terapkan PCA untuk mereduksi dari 4 fitur menjadi 2 komponen utama
+# pca = PCA(n_components=2)
+# principal_components = pca.fit_transform(df_numeric)
+
+# # Buat DataFrame baru untuk komponen utama
+# df_pca = pd.DataFrame(data=principal_components, columns=['PC1', 'PC2'])
+# # Simpan nama mahasiswa untuk keperluan anotasi
+# df_pca['name'] = df['name']
+
+# json_result = df_pca.to_json(orient='records', indent=4)
+# with open('result_pca.json', 'w') as file:
+#     file.write(json_result)
+
+# # 4. Tampilkan hasil komponen utama
+# print("Hasil Principal Components:")
+# print(df_pca)
+
+# # 5. Visualisasikan hasil PCA
+# plt.figure(figsize=(8, 6))
+# plt.scatter(df_pca['PC1'], df_pca['PC2'], alpha=0.8)
+
+# # Tambahkan label nama untuk setiap titik data
+# for i, txt in enumerate(df_pca['name']):
+#     plt.annotate(txt, (df_pca['PC1'][i], df_pca['PC2'][i]))
+
+# plt.title("Visualisasi Data Mahasiswa setelah PCA")
+# plt.xlabel("Komponen Utama 1")
+# plt.ylabel("Komponen Utama 2")
+# plt.grid(True)
+# plt.show()
+
+import numpy as np
+
+# Misalkan A adalah matriks persegi yang invertible
+A = np.array([[4, 7],
+              [2, 6]])
+
+# Hitung inversnya
+A_inv = np.linalg.inv(A)
+
+# Verifikasi: A * A_inv harus menghasilkan matriks identitas
+I = A @ A_inv
+print("Matriks A:")
+print(A)
+print("\nInvers Matriks A:")
+print(A_inv)
+print("\nA dikalikan dengan A_inv (harus identitas):")
+print(I)
+print(A @ I)
+
+B = np.array([[1, 2],
+              [3, 4],
+              [5, 6]])
+
+# Hitung pseudoinversnya
+B_pinv = np.linalg.pinv(B)
+
+# Verifikasi: B * B_pinv * B harus mendekati B
+B_reconstructed = B @ B_pinv @ B
+print("\nMatriks B:")
+print(B)
+print("\nPseudoinvers Matriks B:")
+print(B_pinv)
+print("\nRekonstruksi B (B * B_pinv * B):")
+print(B_reconstructed)
