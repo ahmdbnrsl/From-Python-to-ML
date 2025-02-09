@@ -1,3 +1,4 @@
+from sklearn.cluster import KMeans
 import pandas as pd
 import json
 import matplotlib.pyplot as plt
@@ -375,3 +376,25 @@ print("\nSingular Values (S):")
 print(S)
 print("\nMatriks V^T:")
 print(Vt)
+
+# implement norm of vector in data clustering
+
+data = np.array([
+    [80, 85, 90],
+    [70, 75, 80],
+    [90, 95, 100],
+    [65, 70, 75],
+    [88, 87, 90]
+])
+
+kmeans = KMeans(n_clusters=2, random_state=42)
+kmeans.fit(data)
+labels = kmeans.labels_
+
+print("Label klaster untuk tiap mahasiswa:", labels)
+
+plt.scatter(data[:, 0], data[:, 1], c=labels, cmap='viridis', s=100)
+plt.xlabel("Nilai Ujian")
+plt.ylabel("Rata-rata Tugas")
+plt.title("Pengelompokan Mahasiswa Berdasarkan Performanya")
+plt.show()
