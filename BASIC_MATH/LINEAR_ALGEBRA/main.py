@@ -1,8 +1,17 @@
+import pandas as pd
+import json
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+import numpy as np
+
+
 class Console:
     def __init__(self):
         pass
+
     def log(self, *args):
         print(*args)
+
 
 console = Console()
 """
@@ -45,13 +54,12 @@ RESULT = [8, 9]
          [6, 10]
 """
 
-import numpy as np
 
 # Matriks
-A = np.array([[4,5,6], [5,6,4], [6,4,5]])
+A = np.array([[4, 5, 6], [5, 6, 4], [6, 4, 5]])
 B = np.array([[4], [5], [6]])
-C = np.array([[7,5], [3,1]])
-D = np.array([[1, 4], [3,9]])
+C = np.array([[7, 5], [3, 1]])
+D = np.array([[1, 4], [3, 9]])
 
 # Perkalian Matriks
 print("Hasil Perkalian Matriks A * B:\n", A @ B)
@@ -63,7 +71,7 @@ print("Transpose Matriks A:\n", A.T)
 print("Hasil Penjumlahan Matriks C + D:\n", C + D)
 
 # Vektor
-V = np.array([3,4,5])
+V = np.array([3, 4, 5])
 
 # Menghitung Magnitudo (Panjang Vektor)
 magnitudo = np.linalg.norm(V)
@@ -149,7 +157,7 @@ y = x/2
 
 """
 
-A = np.array([[8,7], [-6, 1]])
+A = np.array([[8, 7], [-6, 1]])
 I = np.array([[1, 0], [0, 1]])
 
 print(I @ A)
@@ -163,7 +171,7 @@ A = np.array([[5, 4], [2, 3]])
 eigenvalues, eigenvectors = np.linalg.eig(A)
 print(eigenvalues, eigenvectors)
 
-A = np.array([[6, 2, 0], [1, 5 , -1], [0, 2, 4]])
+A = np.array([[6, 2, 0], [1, 5, -1], [0, 2, 4]])
 eigenvalues, eigenvectors = np.linalg.eig(A)
 print(eigenvalues, '\n', eigenvectors)
 
@@ -210,8 +218,6 @@ print(eigenvalues, '\n', eigenvectors)
 # impelement on python
 
 # import numpy as np
-from sklearn.decomposition import PCA
-import matplotlib.pyplot as plt
 
 # X = np.array([
 #     [2.5, 2.4, 0.5],
@@ -269,10 +275,6 @@ import matplotlib.pyplot as plt
 # plt.grid(True)
 # plt.show()
 
-import json
-import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
 
 # Contoh data JSON sebagai string
 json_data = """
@@ -328,7 +330,6 @@ json_data = """
 # plt.grid(True)
 # plt.show()
 
-import numpy as np
 
 # Misalkan A adalah matriks persegi yang invertible
 A = np.array([[4, 7],
@@ -362,3 +363,15 @@ print("\nPseudoinvers Matriks B:")
 print(B_pinv)
 print("\nRekonstruksi B (B * B_pinv * B):")
 print(B_reconstructed)
+
+A = np.array([[3, 2],
+              [2, 3]])
+
+U, S, Vt = np.linalg.svd(A)
+
+print("Matriks U:")
+print(U)
+print("\nSingular Values (S):")
+print(S)
+print("\nMatriks V^T:")
+print(Vt)
